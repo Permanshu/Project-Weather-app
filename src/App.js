@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+
 import './App.css';
+import NavScrollExample from './components/Navbar';
+import TagTypesExample from './components/Buttonbar';
+//import Cards from './components/Content';// used export function instead of defualt export so its useless now
+import { Cards, Contenttabs } from './components/Content';
+import Cardbox from './components/Cardbox';
+
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <NavScrollExample />
+      <TagTypesExample />
+      <Cards />
+      <Contenttabs />
+      <Cardbox />
+
     </div>
   );
 }
