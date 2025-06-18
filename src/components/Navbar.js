@@ -30,29 +30,30 @@ function NavScrollExample() {
         <>
             {/* Sidebar */}
             <div className="sidebar">
-                <div className="d-flex flex-column gap-3">
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><SlHome /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><PiMapPinAreaDuotone /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><CiClock2 /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><SlCalender /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><LuWarehouse /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><BsGraphUp /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><IoIosStarOutline /></button>
-                    <button className="Hamburgermenu-btn" onClick={toggleSidebarAnimation}><FaRegSmile /></button>
+                <div className="sidebar1-buttons">
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><SlHome /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><PiMapPinAreaDuotone /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><CiClock2 /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><SlCalender /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><LuWarehouse /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><BsGraphUp /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><IoIosStarOutline /></button>
+                    <button className="sidebar1-elements" onClick={toggleSidebarAnimation}><FaRegSmile /></button>
                 </div>
             </div>
 
             {/* Sidebar Animation */}
-            <div className={`sidebar-animation gap-3 ${showAnimation ? 'show' : ''}`}>
-                <div className="sidebar-elements">Forecast</div>
-                <div className="sidebar-elements">Maps</div>
-                <div className="sidebar-elements">Hourly Forecast</div>
-                <div className="sidebar-elements">Monthly Forecast</div>
-                <div className="sidebar-elements">Life</div>
-                <div className="sidebar-elements">Historical Weather</div>
-                <div className="sidebar-elements">Favourites</div>
-                <div className="sidebar-elements">Send Feedback</div>
-                 
+            <div className={`sidebar-animation ${showAnimation ? 'show' : ''}`}>
+                <div className="sidebar2-buttons">
+                    <div className="sidebar2-elements">Forecast</div>
+                    <div className="sidebar2-elements">Maps</div>
+                    <div className="sidebar2-elements">Hourly Forecast</div>
+                    <div className="sidebar2-elements">Monthly Forecast</div>
+                    <div className="sidebar2-elements">Life</div>
+                    <div className="sidebar2-elements">Historical Weather</div>
+                    <div className="sidebar2-elements">Favourites</div>
+                    <div className="sidebar2-elements">Send Feedback</div>
+                </div>
             </div>
 
             {/* navbar */}
@@ -70,11 +71,11 @@ function NavScrollExample() {
                             style={{ maxHeight: '100px' }}
                             navbarScroll
                         >
-                            <Nav.Link className="nav-forecast" href="#action1">Forecast</Nav.Link>
+                            <Nav.Link className="forecast" href="#action1">Forecast</Nav.Link>
 
                             <Nav.Link className="refresh" href="#action2"> <VscRefresh /> </Nav.Link>
 
-                            <Nav.Link className="favourite" href="#" disabled> <IoIosStarOutline /> </Nav.Link>
+                            <Nav.Link className="favourite" href="#action3"> <IoIosStarOutline /> </Nav.Link>
                         </Nav>
 
                         <Form className="d-flex">

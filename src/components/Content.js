@@ -1,27 +1,40 @@
- import Stack from 'react-bootstrap/Stack';
+import Stack from 'react-bootstrap/Stack';
 import Tabs from 'react-bootstrap/Tabs';
 import Tab from 'react-bootstrap/Tab';
 import { useState } from 'react';
 import { Button } from 'react-bootstrap';
 import useTime from './Time'; // time function
 import { WiDaySunny } from 'react-icons/wi'; // ☀️ icon
-import useTemperature from './useTemperature'; // temperature function
+import useWeatherData from './useWeatherData'; // updated hook
 
 // Weather cards
 export function Cards() {
   const time = useTime();
-  const temperature = useTemperature();
+  const weather = useWeatherData(); // returns temperature, wind, etc.
 
   return (
     <Stack direction="horizontal" gap={3} className="allcards">
+
       <div className="my-card1">
+
         Current weather
-        <div className="weather-header">
-          <WiDaySunny size={36} style={{ marginRight: '8px' }} />
-          <div className="temperature-text">{temperature}</div>
-        </div>
         <div className="time-text">{time}</div>
+
+        <div className="weather-header">
+          <WiDaySunny className="sun-icon" />
+          <div className="temperature-text">{weather.temperature || weather.error || 'Loading...'}</div>
+        </div>
+
+        <div className="my-card1-tab">
+          <div>Wind<br /> {weather.wind}</div>
+          <div>Humidity<br /> {weather.humidity}</div>
+          <div>Pressure<br /> {weather.pressure}</div>
+          <div>Visibility<br /> {weather.visibility}</div>
+          <div>Dew Point<br /> {weather.dewPoint}</div>
+        </div>
+
       </div>
+
       <div className="my-card2">Second item</div>
       <div className="my-card3">Third item</div>
     </Stack>
@@ -31,7 +44,7 @@ export function Cards() {
 // Content Tabs
 export function Contenttabs() {
   const [activeTab, setActiveTab] = useState('Overview');
-  const [clickedIndex, setClickedIndex] = useState(0); // start at 0
+  const [clickedIndex, setClickedIndex] = useState(0);
 
   const subTabs = {
     Overview: ['Summary', 'Details', 'Highlights', 'Info', 'Data', 'Stats'],
@@ -49,15 +62,19 @@ export function Contenttabs() {
         activeKey={activeTab}
         onSelect={(k) => {
           setActiveTab(k);
-          setClickedIndex(0); // reset to first on tab change
+          setClickedIndex(0);
         }}
         className="mb-3"
         id="fill-tab-example"
       >
         {Object.keys(subTabs).map((key) => (
-          <Tab eventKey={key} title={key} key={key}>
+          <Tab
+            eventKey={key}
+            title={key}
+            key={key}
+            tabClassName="main-subtab"  // ← Adds class to each tab
+          >
             <div className="sub-tab-container">
-              {/* Render 6 buttons in grid */}
               {subTabs[key].map((label, index) => (
                 <Button
                   key={index}
@@ -68,16 +85,13 @@ export function Contenttabs() {
                   {label}
                 </Button>
               ))}
-
-              {/* 7th Button — full width below with dynamic content */}
               <Button
-                className={`extra-button ${
-                  clickedIndex === 0
-                    ? 'left-rounded'
-                    : clickedIndex === subTabs[key].length - 1
+                className={`extra-button ${clickedIndex === 0
+                  ? 'left-rounded'
+                  : clickedIndex === subTabs[key].length - 1
                     ? 'right-rounded'
                     : ''
-                }`}
+                  }`}
                 variant="secondary"
               >
                 {subTabs[key][clickedIndex]}
