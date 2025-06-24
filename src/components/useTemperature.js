@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 
 const API_KEY = '2da26b001ff090e2c17591d5682d8915';
-const CITY = 'Delhi'; // You can make this dynamic later
+const CITY = 'Delhi'; // make this dynamic later
 
 export default function useTemperature() {
     const [temperature, setTemperature] = useState(null);

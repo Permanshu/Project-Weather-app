@@ -6,6 +6,7 @@ import { Button } from 'react-bootstrap';
 import useTime from './Time'; // time function
 import { WiDaySunny } from 'react-icons/wi'; // ☀️ icon
 import useWeatherData from './useWeatherData'; // updated hook
+import Mapbox from './Mapbox';
 
 // Weather cards
 export function Cards() {
@@ -35,7 +36,9 @@ export function Cards() {
 
       </div>
 
-      <div className="my-card2">Second item</div>
+      <div className="my-card2">
+        <Mapbox lat={28.6667} lon={77.2167} />
+      </div>
       <div className="my-card3">Third item</div>
     </Stack>
   );
